@@ -3,6 +3,7 @@
 #include <memory>
 #include "SongDuration.hpp"
 #include "Song.hpp"
+#include "Playlist.hpp"
 
 int main()
 {
@@ -44,9 +45,9 @@ int main()
 
     std::cout << "\n*************** PART 3 (Playlist) ***************\n\n";
 
-    /*
     Playlist playlist;
     playlist.add_song(song1);
+    std::cout << "Penis3" << std::endl;
     playlist.add_song(song2);
     playlist.add_song(song3);
 
@@ -74,7 +75,6 @@ int main()
     playlist_move2.print();
     std::cout << "\nMoved from:\n";
     playlist_copy2.print();
-    */
 
     std::cout << "\n*************** PART 4 (Smart Pointers) ***************\n\n";
 
