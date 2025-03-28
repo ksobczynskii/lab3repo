@@ -12,7 +12,7 @@ public:
     Song();
     Song(std::string tit, SongDuration durs, std::string art = "Unknown");
     Song(std::string tit, int min = 0, int sec = 0, std::string art = "Unknown");
-    Song &Song::operator=(const Song &other);
+    // Song &operator=(const Song &other);
     void print();
     ~Song();
     void set_title(std::string);

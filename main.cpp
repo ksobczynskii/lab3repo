@@ -47,7 +47,6 @@ int main()
 
     Playlist playlist;
     playlist.add_song(song1);
-    std::cout << "Penis3" << std::endl;
     playlist.add_song(song2);
     playlist.add_song(song3);
 

@@ -1,12 +1,17 @@
 #include "Playlist.hpp"
 
-Playlist::Playlist(unsigned int init_cap) : capacity{init_cap}, size{0}
+Playlist::Playlist(unsigned int init_cap) : capacity(init_cap), size(0)
 {
-    std::cout << "Penis" << std::endl;
-    Song *songs = new Song[init_cap];
-    std::cout << "Penis2" << std::endl;
+    songs = new Song[init_cap];
 }
-Playlist::Playlist(const Playlist &other) : capacity{other.capacity}, size{other.size}, songs{other.songs} {};
+Playlist::Playlist(const Playlist &other) : capacity{other.capacity}, size{other.size}
+{
+    songs = new Song[capacity];
+    for (int i = 0; i < size; i++)
+    {
+        songs[i] = other.songs[i];
+    }
+}
 Playlist &Playlist::operator=(const Playlist &other)
 {
     if (this == &other)
@@ -26,8 +31,11 @@ Playlist &Playlist::operator=(const Playlist &other)
     }
     return *this;
 }
-Playlist::Playlist(Playlist &&other) : capacity{other.capacity}, size{other.size}, songs{other.songs}
+Playlist::Playlist(Playlist &&other)
 {
+    capacity = other.capacity;
+    size = other.size;
+    songs = other.songs;
     other.capacity = 0;
     other.size = 0;
     other.songs = nullptr;
@@ -38,7 +46,6 @@ Playlist &Playlist::operator=(Playlist &&other)
     {
         return *this;
     }
-    delete[] this->songs;
     capacity = other.capacity;
     size = other.size;
     songs = other.songs;
@@ -47,7 +54,9 @@ Playlist &Playlist::operator=(Playlist &&other)
     other.songs = nullptr;
     return *this;
 }
-Playlist::~Playlist() {
+Playlist::~Playlist()
+{
+    delete[] songs;
 };
 
 void Playlist::resize(unsigned int new_capacity)
@@ -56,14 +65,11 @@ void Playlist::resize(unsigned int new_capacity)
 }
 void Playlist::add_song(const Song &song)
 {
-
-    if (size == capacity)
+    if (size >= capacity)
     {
-        this->resize(2 * capacity);
+        resize(capacity * 2);
     }
-    std::cout << "Penis7" << std::endl;
     songs[size++] = song;
-    std::cout << "Penis8" << std::endl;
 }
 int Playlist::get_size()
 {

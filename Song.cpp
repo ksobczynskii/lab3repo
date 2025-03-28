@@ -17,17 +17,17 @@ Song::Song(std::string tit, int min, int sec, std::string art)
     artist = art;
     duration = SongDuration(min, sec);
 }
-Song &Song::operator=(const Song &other)
-{
-    if (this == &other)
-    {
-        return *this;
-    }
-    title = other.title;
-    artist = other.artist;
-    duration = SongDuration();
-    return *this;
-}
+// Song &Song::operator=(const Song &other)
+// {
+//     if (this == &other)
+//     {
+//         return *this;
+//     }
+//     title = other.title;
+//     artist = other.artist;
+//     duration = SongDuration();
+//     return *this;
+// }
 Song::~Song()
 {
     count_songs--;
